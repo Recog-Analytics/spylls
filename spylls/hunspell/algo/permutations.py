@@ -66,7 +66,7 @@ def mapchars(word: str, maptable: List[Set[str]]) -> Iterator[str]:
                 pos = word.find(option, start)
                 if pos != -1:
                     for other in options:
-                        if other == option:
+                        if other == option or word[pos-len(other)+1:].startswith(other):
                             continue
                         replaced = word[:pos] + other + word[pos+len(option):]
                         yield replaced
